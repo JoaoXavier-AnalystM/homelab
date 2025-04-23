@@ -11,7 +11,7 @@ resource "proxmox_vm_qemu" "ubuntu" {
   name        = var.vm_name
   target_node = "pe"
   vmid        = var.vm_id
-  clone       = "9001"
+  clone       = "ubuntu-2404-2-cloud-init"
   full_clone  = true
   cores       = 2
   memory      = 2048

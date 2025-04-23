@@ -1,18 +1,21 @@
-variable "pm_api_url" {
-  type        = string
-  description = "Proxmox API URL"
+variable "proxmox_api_url" {
+  type = string
 }
 
-variable "pm_api_user" {
+variable "proxmox_api_token_id" {
+  description = "Proxmox API Token ID"
   type        = string
-  description = "Proxmox username (e.g. root@pam)"
-}
-variable "pm_api_token_id" {
-  type        = string
-  description = "Proxmox API token ID (e.g. root@pam!token_name)"
+  sensitive   = true
 }
 
-variable "ssh_public_key" {
-  description = "Conteúdo da chave SSH pública"
+variable "proxmox_api_token_secret" {
+  description = "Proxmox API Token Secret"
   type        = string
+  sensitive   = true
+}
+
+variable "ssh_key" {
+  description = "Chave SSH pública"
+  type        = string
+  sensitive   = true # Oculta nos logs
 }
