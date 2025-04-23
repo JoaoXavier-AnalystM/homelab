@@ -1,6 +1,15 @@
+terraform {
+  required_providers {
+    proxmox = {
+      source  = "telmate/proxmox"
+    }
+  }
+}
+
 resource "proxmox_vm_qemu" "ubuntu" {
+  provider    = proxmox
   name        = var.vm_name
-  target_node = "pe" # ou seu node real
+  target_node = "pe"
   vmid        = var.vm_id
   clone       = "9001"
   full_clone  = true
@@ -16,12 +25,14 @@ resource "proxmox_vm_qemu" "ubuntu" {
   cipassword = var.default_password
 
   network {
-    model    = "virtio"
-    bridge   = "vmbr0"
+    id     = 0
+    model  = "virtio"
+    bridge = "vmbr0"
   }
 
   disk {
-    type    = "scsi"
+    slot    = "scsi0"            # ✅ slot correto
+    type    = "disk"             # ✅ tipo correto
     storage = "local-lvm"
     size    = "10G"
   }

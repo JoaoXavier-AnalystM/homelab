@@ -3,15 +3,13 @@ variable "pm_api_url" {
   description = "Proxmox API URL"
 }
 
-variable "pm_user" {
+variable "pm_api_user" {
   type        = string
   description = "Proxmox username (e.g. root@pam)"
 }
-
-variable "pm_password" {
-  description = "Senha do Proxmox"
+variable "pm_api_token_id" {
   type        = string
-  sensitive   = true
+  description = "Proxmox API token ID (e.g. root@pam!token_name)"
 }
 
 variable "ssh_public_key" {
